@@ -1,0 +1,17 @@
+{
+  "name": "expressapp",
+  "version": "1.0.0",
+  "description": "My Express JS web site.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "express"
+  ],
+  "author": "Vladyslav Ganin",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
