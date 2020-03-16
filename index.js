@@ -1,18 +1,13 @@
 const express = require('express');
 const path = require('path');
-var http = require('http');
-const port = 3000;
-
+const PORT = 3000;
 const app = express();
-var server = http.createServer(app);
 
-
-
-/*app.get('/', function (request, response) {
-    response.sendFile(path.join(__dirname, 'index.html'));
-});
-
-/*app.get('/', (req, res) => res.send(htmlfile)) */
+var server = app.listen(PORT, "127.0.0.1", () => {
+    var host = server.address().address;
+    var port = server.address().port;
+    console.log(`Server started. Listening on: ${host} at ${port}`);
+})
 
 app.use(express.static(__dirname + '/front'));
 
@@ -20,9 +15,3 @@ app
     .get('/', function (req, res) {
         res.sendFile(path.join(__dirname, 'front', 'index.html'));
     });
-
-
-server.listen(3000, 'localhost');
-server.on('listening', function () {
-    console.log('Server started. %s at %s', server.address().port, server.address().address);
-});
