@@ -10,8 +10,14 @@ var server = app.listen(PORT, "127.0.0.1", () => {
 })
 
 app.use(express.static(__dirname + '/front'));
+app.use(express.static(__dirname + '/front/tailwind'));
 
 app
     .get('/', function (req, res) {
         res.sendFile(path.join(__dirname, 'front', 'index.html'));
+    });
+
+app
+    .get('/main', function (req, res) {
+        res.sendFile(path.join(__dirname, 'front', 'tailwind/main.html'));
     });

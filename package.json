@@ -4,7 +4,9 @@
   "description": "My Express JS web site.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run build:css && nodemon index.js",
+    "build:css": "postcss front/src/style.css -o front/tailwind/style.css"
   },
   "keywords": [
     "express"
@@ -13,5 +15,9 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2",
+    "tailwindcss": "^1.2.0"
   }
 }
