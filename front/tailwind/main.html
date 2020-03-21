@@ -9,17 +9,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <style>
 
-    </style>
 </head>
 
-<body class="">
-    <button class="bg-green-500 text-white font-bold py-2 px-4 rounded">Hello</button>
+<body>
+    <div class="max-w-xl h-12 m-auto mt-4 text-center">
+        <h1 class="font-bold text-xl">Cards with names</h1>
+        <p>Write a name below and the number will be randomly assigned to you.</p>
+        <div class="p-4 flex flex-col">
+            <div class="my-4 text-left m-auto">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" class="border">
+                </input>
+                <label for="number" class="block">Assigned number:</label>
+            </div>
+        </div>
 
-    <div class="container" style="margin-top: 5%">
-        <a href="/"><button class="button">Return to Homepage</button></a>
+        <button class="btn px-6 py-3 bg-blue-500 m-auto hover:bg-blue-600" id="carbutton">Find your
+            car</button>
+
+        <div class="text-center max-w-md m-auto invisible" id="carcard">
+            <div class="rounded overflow-hidden shadow-lg mt-12">
+                <div class="px-6 py-4">
+                    <div class="font-bold text-l mb-2">Toyota</div>
+                    <p class="text-gray-700 text-base">
+                        This is a good Toyota car.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="block mt-48 relative">
+            <a href="/">
+                <button class="p-4 btn">Return to Homepage</button>
+            </a>
+        </div>
     </div>
+
+    <script>
+        let cardbutton = document.querySelector("#carbutton");
+        let card = document.querySelector("#carcard");
+
+        cardbutton.addEventListener("click", function () {
+            card.classList.remove("invisible");
+        })
+
+    </script>
 
 
 </body>

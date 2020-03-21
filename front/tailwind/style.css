@@ -623,6 +623,31 @@ video {
   }
 }
 
+.btn {
+  background-color: #48bb78;
+  color: #fff;
+  font-weight: 700;
+  border-radius: 0.25rem;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  --transform-translate-x: 0;
+  --transform-translate-y: 0;
+  --transform-rotate: 0;
+  --transform-skew-x: 0;
+  --transform-skew-y: 0;
+  --transform-scale-x: 1;
+  --transform-scale-y: 1;
+  transform: translateX(var(--transform-translate-x)) translateY(var(--transform-translate-y)) rotate(var(--transform-rotate)) skewX(var(--transform-skew-x)) skewY(var(--transform-skew-y)) scaleX(var(--transform-scale-x)) scaleY(var(--transform-scale-y));
+}
+
+.btn:hover {
+  --transform-translate-y: -0.25rem;
+  --transform-scale-x: 1.1;
+  --transform-scale-y: 1.1;
+  background-color: #f56565
+}
+
 .sr-only {
   position: absolute;
   width: 1px;

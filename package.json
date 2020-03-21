@@ -14,10 +14,12 @@
   "author": "Vladyslav Ganin",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "postcss": "^7.0.27"
   },
   "devDependencies": {
     "nodemon": "^2.0.2",
+    "postcss-cli": "^7.1.0",
     "tailwindcss": "^1.2.0"
   }
 }
