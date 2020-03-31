@@ -1,12 +1,12 @@
 const express = require('express');
 const path = require('path');
-const PORT = 3000;
+const PORT = 5000;
 const app = express();
 
-var server = app.listen(PORT, "127.0.0.1", () => {
+var server = app.listen(PORT, () => {
     var host = server.address().address;
     var port = server.address().port;
-    console.log(`Server started. Listening on: ${host} at ${port}`);
+    console.log(`Server started. Listening at ${port}`);
 })
 
 app.use(express.static(__dirname + '/front'));
