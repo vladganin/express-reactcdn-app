@@ -5,11 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run build:css && nodemon index.js",
+    "start": "npm run build:css && node index.js",
     "build:css": "postcss front/src/style.css -o front/tailwind/style.css"
   },
   "keywords": [
-    "express"
+    "express",
+    "heroku"
   ],
   "author": "Vladyslav Ganin",
   "license": "MIT",
@@ -21,5 +22,8 @@
     "nodemon": "^2.0.2",
     "postcss-cli": "^7.1.0",
     "tailwindcss": "^1.2.0"
+  },
+  "engines": {
+    "node": "13.10.1"
   }
 }
