@@ -25,5 +25,9 @@
   },
   "engines": {
     "node": "13.10.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/vladganin/express-reactcdn-app.git"
   }
 }
