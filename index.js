@@ -33,3 +33,10 @@ app
     .get('/wiki-cards', function (req, res) {
         res.sendFile(path.join(__dirname, 'front', 'tailwind/wikicard.html'));
     });
+
+app.listen(process.env.PORT, function () {
+    console.log('Listening to default PORT')
+});
+
+
+module.exports = app;
