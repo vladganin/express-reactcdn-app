@@ -28,6 +28,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/vladganin/express-reactcdn-app.git"
+    "url": "https://github.com/vladganin/express-reactcdn-app"
   }
 }
