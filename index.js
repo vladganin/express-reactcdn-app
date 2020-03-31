@@ -11,6 +11,7 @@ var server = app.listen(PORT, "127.0.0.1", () => {
 
 app.use(express.static(__dirname + '/front'));
 app.use(express.static(__dirname + '/front/tailwind'));
+app.use(express.static(__dirname + '/front/images/'));
 
 app
     .get('/', function (req, res) {
@@ -20,4 +21,15 @@ app
 app
     .get('/main', function (req, res) {
         res.sendFile(path.join(__dirname, 'front', 'tailwind/main.html'));
+    });
+
+app
+    .get('/main/front/images/car.jpg', function (req, res) {
+        res.sendFile(path.join(__dirname, 'front', 'images/car.jpg'));
+    });
+
+
+app
+    .get('/wiki-cards', function (req, res) {
+        res.sendFile(path.join(__dirname, 'front', 'tailwind/wikicard.html'));
     });

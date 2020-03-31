@@ -4,54 +4,100 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
+    <title>Car Page - Tailwind + Vue</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
-
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
-    <div class="max-w-xl h-12 m-auto mt-4 text-center">
+    <div class="static max-w-xl h-12 m-auto mt-4 text-center">
         <h1 class="font-bold text-xl">Cards with names</h1>
         <p>Write a name below and the number will be randomly assigned to you.</p>
         <div class="p-4 flex flex-col">
             <div class="my-4 text-left m-auto">
                 <label for="name">Name:</label>
-                <input type="text" id="name" name="name" class="border">
+                <input type="text" id="brandname" name="name" class="border">
                 </input>
                 <label for="number" class="block">Assigned number:</label>
             </div>
         </div>
 
-        <button class="btn px-6 py-3 bg-blue-500 m-auto hover:bg-blue-600" id="carbutton">Find your
+        <button value="send" onclick="submitBrandName() & addBrand()"
+            class="btn px-6 py-3 bg-blue-500 m-auto hover:bg-blue-600" id="carbutton">Find your
             car</button>
 
         <div class="text-center max-w-md m-auto invisible" id="carcard">
             <div class="rounded overflow-hidden shadow-lg mt-12">
-                <div class="px-6 py-4">
-                    <div class="font-bold text-l mb-2">Toyota</div>
+                <div class="px-6 py-4" id="beforecard">
+                    <div class="font-bold text-l mb-2" id="carbrand"></div>
                     <p class="text-gray-700 text-base">
                         This is a good Toyota car.
                     </p>
                 </div>
             </div>
         </div>
-
-        <div class="block mt-48 relative">
+        <div id="app" class="mt-24">
+            <p>{{a}}</p>
+        </div>
+        <div class="absolute top-0 left-0 m-4">
             <a href="/">
-                <button class="p-4 btn">Return to Homepage</button>
+                <button class="p-2 btn text-sm">Return to Homepage</button>
             </a>
         </div>
     </div>
 
     <script>
+        /* Making the card visible upon clicking */
         let cardbutton = document.querySelector("#carbutton");
         let card = document.querySelector("#carcard");
 
         cardbutton.addEventListener("click", function () {
-            card.classList.remove("invisible");
+            if (submitBrandName() != '') {
+                card.classList.remove("invisible");
+
+                axios.get('/main/front/images/car.jpg')
+                    .then(function (response) {
+                        let imageBlock = document.createElement("img");
+                        console.log(response);
+                        imageBlock.src = response.data;
+                        let holder = document.getElementById("beforecard");
+                        holder.appendChild(imageBlock);
+                    })
+                    .catch(function (error) {
+                        // handle error
+                        console.log(error);
+                    })
+            }
+        })
+
+        /* Capturing the brand name in the input tag and displaying upon clicking */
+        function submitBrandName() {
+            var value = document.getElementById("brandname").value;
+            return value;
+        }
+
+        function addBrand() {
+            let getvalue = document.getElementById('name');
+            let brand = document.getElementById('carbrand');
+            brand.textContent = submitBrandName();
+            vm.a = brand.textContent;
+        }
+
+        /*------------------ VUE CODE -------------------------*/
+
+        // Our data object
+
+
+        // The object is added to a Vue instance
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                a: 'five'
+            }
         })
 
     </script>

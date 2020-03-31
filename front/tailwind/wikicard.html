@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Wiki Cards with Vue</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        .fade-enter-active,
+        .fade-leave-active {
+            transition: opacity 1s;
+        }
+
+        .fade-enter,
+        .fade-leave-to
+
+        /* .fade-leave-active below version 2.1.8 */
+            {
+            opacity: 0;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="app" class="static">
+        <div class="max-w-md bg-blue-200 rounded shadow m-auto mt-4 p-8">
+            <h1 class="font-bold font-serif text-2xl">Wiki cards</h1>
+            <p class="text-md">Displaying car brands.</p>
+            <button class="bg-gray-300 rounded shadow p-2 mt-4 text-sm hover:bg-white transition duration-100 ease-in"
+                v-on:click="seen = !seen">Show
+                card</button>
+            <button class="bg-gray-300 rounded shadow p-2 mt-4 text-sm hover:bg-white transition duration-100 ease-in"
+                v-on:click="addCard">Add card</button>
+
+        </div>
+        <transition name="fade">
+            <div v-if="seen" class="max-w-md mt-24 min-h-full bg-blue-200 rounded shadow m-auto p-8">
+                <ul class="">
+                    <li v-for="brand in brands">{{brand}}</li>
+                </ul>
+            </div>
+        </transition>
+
+        <div class="absolute top-0 left-0 m-4">
+            <a href="/">
+                <button class="p-2 btn text-sm">Return to Homepage</button>
+            </a>
+        </div>
+    </div>
+    <script>
+        /*------------------ VUE CODE -------------------------*/
+
+        // Our data object
+
+
+        // The object is added to a Vue instance
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                brands: {
+                    bmw: 'BMW',
+                    audi: 'Audi',
+                    renault: 'Renault'
+                },
+                seen: false
+            },
+            methods: {
+                addCard: function () {
+                    let brand_to_add = prompt('What brand do you want to add?');
+                    if (brand_to_add == null) {
+                        return false;
+                    }
+                    let name_to_add = brand_to_add.toLowerCase();
+                    Vue.set(this.brands, name_to_add, brand_to_add)
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>

@@ -8,19 +8,42 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
-    <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-    <h1> hello from my html file with React and served on Express!! whooray </h1>
-    <a href="main"><button>Click to check out my Tailwind styled page!</button></a>
+    <div class="w-4/6 m-auto mt-24 bg-gray-200 shadow rounded p-8">
+        <h1 class="font-serif text-2xl"> Hello </h1>
+        <h2 class="text-xl">It is the page that I use for practice. </h2>
+        <p class="mt-4 mb-1">My technology stack: </p>
+        </h1>
+        <ul class="list-disc list-inside">
+            <li>Javascript</li>
+            <li>Vue</li>
+            <li>Express</li>
+        </ul>
+        <button class="btn p-2 mt-4 w-1/2 block text-left font-normal hover:bg-green-700 hover:scale-105"><a
+                href="main">1.
+                Click to
+                check out my first
+                Tailwind styled
+                page</a></button>
+        <button class="btn p-2 mt-4 font-normal block w-1/2 text-left hover:bg-green-700 hover:scale-105"><a
+                href="wiki-cards">2.
+                Click to
+                check out
+                my
+                Vue Wiki Card
+                page</a></button>
 
-    <div id="like_button_container" onclick="printing" style="margin-top: 20px"></div>
-
-
+        <div id="like_button_container" class="btn p-2 mt-4 w-1/2 text-left block hover:bg-green-700 hover:scale-105">
+        </div>
+    </div>
+    <div class="mt-4">
+        <p class="text-center text-gray-500 text-xs">
+            Powered by Express. Hosted on Netlify. &copy;2020 Vladyslav Ganin. MIT.
+        </p>
+    </div>
 
     <!-- Load React. -->
     <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
