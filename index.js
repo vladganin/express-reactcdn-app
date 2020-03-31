@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const PORT = process.env.PORT;
+const PORT = 5000;
 const app = express();
 
 var server = app.listen(PORT, () => {
@@ -33,10 +33,5 @@ app
     .get('/wiki-cards', function (req, res) {
         res.sendFile(path.join(__dirname, 'front', 'tailwind/wikicard.html'));
     });
-
-app.listen(process.env.PORT, function () {
-    console.log('Listening to default PORT')
-});
-
 
 module.exports = app;
