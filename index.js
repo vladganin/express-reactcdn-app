@@ -1,15 +1,13 @@
 const express = require('express');
 const path = require('path');
-const PORT = 5000;
 const app = express();
 
-var server = app.listen(PORT, () => {
-    var host = server.address().address;
-    var port = server.address().port;
-    console.log(`Server started. Listening at ${port}`);
+app.listen(process.env.PORT || 3000, () => {
+    console.log(`Server started. Port: ${process.env.PORT}`);
 })
 
 app.use(express.static(__dirname + '/front'));
+app.use(express.static('front'));
 app.use(express.static(__dirname + '/front/tailwind'));
 app.use(express.static(__dirname + '/front/images/'));
 
