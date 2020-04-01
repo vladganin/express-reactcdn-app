@@ -11,7 +11,7 @@ app.use(express.static(__dirname + '/front/images/'));
 app.listen(port);
 
 app
-    .get('/*', function (req, res) {
+    .get('/', function (req, res) {
         res.sendFile(path.join(__dirname, '/front/index.html'));
     });
 
