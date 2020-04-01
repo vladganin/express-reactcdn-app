@@ -24,13 +24,24 @@
             {
             opacity: 0;
         }
+
+        /* Dark mode */
+        .dark {
+            background-color: black;
+            transition: 1s;
+        }
+
+        .normal {
+            background-color: white;
+            transition: 1s;
+        }
     </style>
 
 </head>
 
-<body>
+<body id="bodyId">
     <div id="app" class="static">
-        <div class="max-w-md bg-blue-200 rounded shadow m-auto mt-4 p-8">
+        <div class="max-w-md bg-blue-200 rounded shadow m-auto mt-16 p-8">
             <h1 class="font-bold font-serif text-2xl">Wiki cards</h1>
             <p class="text-md">Displaying car brands.</p>
             <button class="bg-gray-300 rounded shadow p-2 mt-4 text-sm hover:bg-white transition duration-100 ease-in"
@@ -38,13 +49,16 @@
                 card</button>
             <button class="bg-gray-300 rounded shadow p-2 mt-4 text-sm hover:bg-white transition duration-100 ease-in"
                 v-on:click="addCard">Add card</button>
+            <button class="bg-gray-300 rounded shadow p-2 mt-4 text-sm hover:bg-white transition duration-100 ease-in"
+                onclick="switchDark()">Dark mode</button>
 
         </div>
         <transition name="fade">
-            <div v-if="seen" class="max-w-md mt-24 min-h-full bg-blue-200 rounded shadow m-auto p-8">
+            <div v-if=" seen" class="max-w-md mt-24 min-h-full bg-blue-200 rounded shadow m-auto p-8">
                 <ul class="">
                     <li v-for="brand in brands">{{brand}}</li>
                 </ul>
+                <div v-html="paragraph"></div>
             </div>
         </transition>
 
@@ -55,6 +69,15 @@
         </div>
     </div>
     <script>
+        function switchDark() {
+            let page = document.getElementById('bodyId');
+            if (page.classList.contains('dark')) {
+                page.classList.add('normal');
+            } else {
+                page.classList.add('dark');
+            }
+        };
+
         /*------------------ VUE CODE -------------------------*/
 
         // Our data object
@@ -69,7 +92,9 @@
                     audi: 'Audi',
                     renault: 'Renault'
                 },
-                seen: false
+                seen: false,
+                paragraph: `
+                    <p class="text-red-500"> Hi, I am paragraph!</p> `
             },
             methods: {
                 addCard: function () {
@@ -78,6 +103,7 @@
                         return false;
                     }
                     let name_to_add = brand_to_add.toLowerCase();
+                    brand_to_add = brand_to_add.charAt(0).toUpperCase() + brand_to_add.substring(1).toLowerCase();
                     Vue.set(this.brands, name_to_add, brand_to_add)
                 }
             }

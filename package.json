@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run build:css && node index.js",
+    "start": "npm run build:css && nodemon index.js",
     "build:css": "postcss front/src/style.css -o front/tailwind/style.css"
   },
   "keywords": [
