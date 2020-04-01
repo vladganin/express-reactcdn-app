@@ -1,19 +1,18 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-
-app.listen(process.env.PORT || 3000, () => {
-    console.log(`Server started. Port: ${process.env.PORT}`);
-})
+const port = process.env.PORT || 3000;
 
 app.use(express.static(__dirname + '/front'));
 app.use(express.static('front'));
 app.use(express.static(__dirname + '/front/tailwind'));
 app.use(express.static(__dirname + '/front/images/'));
 
+app.listen(port);
+
 app
-    .get('/', function (req, res) {
-        res.sendFile(path.join(__dirname, 'front', 'index.html'));
+    .get('/*', function (req, res) {
+        res.sendFile(path.join(__dirname, '/front/index.html'));
     });
 
 app
