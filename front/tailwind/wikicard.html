@@ -43,22 +43,26 @@
     <div id="app" class="static">
         <div class="max-w-md bg-blue-200 rounded shadow m-auto mt-16 p-8">
             <h1 class="font-bold font-serif text-2xl">Wiki cards</h1>
-            <p class="text-md">Displaying car brands.</p>
+            <p class="text-md">Add a word, the app will get Wikipedia info on it.</p>
             <button class="bg-gray-300 rounded shadow p-2 mt-4 text-sm hover:bg-white transition duration-100 ease-in"
                 v-on:click="seen = !seen">Show
                 card</button>
             <button class="bg-gray-300 rounded shadow p-2 mt-4 text-sm hover:bg-white transition duration-100 ease-in"
-                v-on:click="addCard">Add card</button>
+                v-on:click="addCard">Add word</button>
             <button class="bg-gray-300 rounded shadow p-2 mt-4 text-sm hover:bg-white transition duration-100 ease-in"
                 onclick="switchDark()">Dark mode</button>
 
         </div>
         <transition name="fade">
-            <div v-if=" seen" class="max-w-md mt-24 min-h-full bg-blue-200 rounded shadow m-auto p-8">
+            <div v-if=" seen" class="w-1/2 h-64 mt-24 bg-blue-200 rounded shadow m-auto p-8 overflow-scroll">
                 <ul class="">
-                    <li v-for="brand in brands">{{brand}}</li>
+                    <li v-for="brand in brands"
+                        class="cursor-pointer hover:text-red-600 transition duration-100 ease-in text-lg">
+                        <p id="brandLi" onclick="getWikiInfo()">{{brand}}</p>
+                    </li>
                 </ul>
-                <div v-html="paragraph"></div>
+                <div v-html="paragraph" class="text-md"></div>
+                <p id="paragraph" class="text-sm"></p>
             </div>
         </transition>
 
@@ -73,28 +77,43 @@
             let page = document.getElementById('bodyId');
             if (page.classList.contains('dark')) {
                 page.classList.add('normal');
+                page.classList.remove('dark')
             } else {
                 page.classList.add('dark');
+                page.classList.remove('normal')
             }
         };
 
-        /*------------------ VUE CODE -------------------------*/
+        //Create a new object to interact with the server
+        var xhr = new XMLHttpRequest();
+        var url = "https://en.wikipedia.org/w/api.php?action=query&titles=Belgrade&prop=pageimages&format=json&pithumbsize=250&origin=*";
 
-        // Our data object
-
+        function getWikiInfo() {
+            let brandname = document.getElementById("brandLi");
+            var url2 = `https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=${brandname.textContent}&origin=*`;
+            xhr.open('GET', url2, true);
+            xhr.onload = function () {
+                var data = JSON.parse(this.response);
+                let textField = document.getElementById("paragraph");
+                // define the Iterator for the options object
+                let pageWiki = data.query.pages;
+                const entries = Object.entries(pageWiki);
+                let pageWikiText = entries[0][1].extract;
+                textField.textContent = pageWikiText;
+            }
+            xhr.send();
+        };
 
         // The object is added to a Vue instance
         var vm = new Vue({
             el: '#app',
             data: {
                 brands: {
-                    bmw: 'BMW',
-                    audi: 'Audi',
-                    renault: 'Renault'
                 },
                 seen: false,
                 paragraph: `
-                    <p class="text-red-500"> Hi, I am paragraph!</p> `
+                    <hr class="my-2 border-black">
+                    <p>General information.</p> `
             },
             methods: {
                 addCard: function () {
