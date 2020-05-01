@@ -43,7 +43,7 @@
     <div id="app" class="static">
         <div class="max-w-md bg-blue-200 rounded shadow m-auto mt-16 p-8">
             <h1 class="font-bold font-serif text-2xl">Wiki cards</h1>
-            <p class="text-md">Add a word, the app will get Wikipedia info on it.</p>
+            <p class="text-md">Add a word, the app will get Wikipedia info for it.</p>
             <button class="bg-gray-300 rounded shadow p-2 mt-4 text-sm hover:bg-white transition duration-100 ease-in"
                 v-on:click="seen = !seen">Show
                 card</button>
@@ -117,7 +117,7 @@
             },
             methods: {
                 addCard: function () {
-                    let brand_to_add = prompt('What brand do you want to add?');
+                    let brand_to_add = prompt('What word do you want to add?');
                     if (brand_to_add == null) {
                         return false;
                     }

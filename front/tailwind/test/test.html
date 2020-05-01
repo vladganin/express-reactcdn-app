@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Test Page</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="canvas.js"></script>
+    <style>
+        .fade-enter-active,
+        .fade-leave-active {
+            transition: opacity 1s;
+        }
+
+        .fade-enter,
+        .fade-leave-to
+
+        /* .fade-leave-active below version 2.1.8 */
+            {
+            opacity: 0;
+        }
+
+        /* Dark mode */
+        .dark {
+            background-color: black;
+            transition: 1s;
+        }
+
+        .normal {
+            background-color: white;
+            transition: 1s;
+        }
+    </style>
+
+</head>
+
+<body id="bodyId">
+    <div class="static w-screen right-0 top-0 h-full py-20 px-8">
+        <section class="grid md:grid-cols-4 sm:grid-cols-2 gap-4 mb-4">
+            <div class="h-40 bg-green-500 rounded shadow-md text-center p-8">Sales</div>
+            <div class="h-40 bg-red-500 rounded shadow-md text-center p-8">Expenses</div>
+            <div class="h-40 bg-yellow-500 rounded shadow-md text-center p-8">Share</div>
+            <div class="h-40 bg-blue-500 rounded shadow-md text-center p-8">Advance</div>
+            <div class="col-span-3 bg-red-200 rounded shadow-md text-center p-8">Sales map</div>
+            <div class="h-24 bg-red-200 rounded shadow-md text-center p-8">Top 10 States</div>
+        </section>
+    </div>
+
+    <div class="absolute top-0 left-0 m-4">
+        <a href="/">
+            <button class="p-2 btn text-sm">Return to Homepage</button>
+        </a>
+    </div>
+
+    <canvas
+        class="border-solid border-black border-2 mx-auto hover:bg-red-600 transition duration-500 cursor-pointer">Hello</canvas>
+    <script>
+
+    </script>
+</body>
+
+</html>

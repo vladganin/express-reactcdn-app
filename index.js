@@ -31,4 +31,9 @@ app
         res.sendFile(path.join(__dirname, 'front', 'tailwind/wikicard.html'));
     });
 
+app
+    .get('/test', function (req, res) {
+        res.sendFile(path.join(__dirname, 'front', 'tailwind/test/test.html'));
+    });
+
 module.exports = app;
