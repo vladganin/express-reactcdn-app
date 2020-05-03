@@ -7,6 +7,8 @@ app.use(express.static(__dirname + '/front'));
 app.use(express.static('front'));
 app.use(express.static(__dirname + '/front/tailwind'));
 app.use(express.static(__dirname + '/front/images/'));
+app.use(express.static(__dirname + '/front/react-components/components'));
+app.use(express.static(__dirname + '/front/react-components'));
 
 app.listen(port);
 
@@ -32,7 +34,7 @@ app
     });
 
 app
-    .get('/test', function (req, res) {
+    .get('/dashboard', function (req, res) {
         res.sendFile(path.join(__dirname, 'front', 'tailwind/dashboard/dashboard.html'));
     });
 

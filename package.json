@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run build:css && nodemon index.js",
-    "build:css": "postcss front/src/style.css -o front/tailwind/style.css"
+    "build:css": "postcss front/src/style.css -o front/tailwind/style.css",
+    "build:jsx": "npx babel --watch front/react-components/src --out-dir front/react-components/components --presets react-app/prod",
+    "react": "npx babel front/react-components/src --out-dir front/react-components/components --presets react-app/prod && npm run build:css && nodemon index.js"
   },
   "keywords": [
     "express",
@@ -15,6 +17,8 @@
   "author": "Vladyslav Ganin",
   "license": "MIT",
   "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-react-app": "^3.1.2",
     "express": "^4.17.1",
     "path": "^0.12.7",
     "postcss": "^7.0.27"

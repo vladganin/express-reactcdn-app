@@ -1,0 +1,8 @@
+{
+    "ignoreRoot": [
+        "front/react-components/components/"
+    ],
+    "events": {
+        "restart": "npx babel front/react-components/src --out-dir front/react-components/components --presets react-app/prod"
+    }
+}

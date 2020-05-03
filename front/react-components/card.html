@@ -7,18 +7,32 @@
     <title>React card component</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../style.css">
 </head>
 
-<body id="bodyId">
+<body id="bodyId" class="w-screen max-h-screen px-2" style="background-color: rgb(231, 65, 84)">
 
+    <div id="card" class="relative m-auto md:w-4/6 h-auto bg-white rounded-sm shadow-md p-12 mt-20"
+        style="font-family: 'Lato', sans-serif; min-height: 425px;">
+    </div>
 
+    <div class="m-auto w-4/5 md:w-1/2 text-white mt-6">
+        <p>Credit: Polina Shost</p>
+        <a class="hover:text-yellow-400" href="https://www.behance.net/gallery/72859553/Collection-of-product-cards">
+            https://www.behance.net/gallery/72859553/Collection-of-product-cards
+        </a>
+    </div>
     <div class="absolute top-0 left-0 m-4">
         <a href="/">
             <button class="p-2 btn text-sm">Return to Homepage</button>
         </a>
     </div>
+
+    <!-- React being added to the page via scripts below -->
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="components/hello.js"></script>
 </body>
 
 </html>
