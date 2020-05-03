@@ -33,7 +33,12 @@ app
 
 app
     .get('/test', function (req, res) {
-        res.sendFile(path.join(__dirname, 'front', 'tailwind/test/test.html'));
+        res.sendFile(path.join(__dirname, 'front', 'tailwind/dashboard/dashboard.html'));
+    });
+
+app
+    .get('/react-component-card', function (req, res) {
+        res.sendFile(path.join(__dirname, 'front', 'react-components/card.html'));
     });
 
 module.exports = app;
